@@ -20,7 +20,6 @@ public class EmployeeController {
 
     @GetMapping("/hello")
     public String getHello() {
-
         return "Hello World";
     }
 

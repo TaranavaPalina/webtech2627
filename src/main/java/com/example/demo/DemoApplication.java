@@ -17,10 +17,19 @@ public class DemoApplication {
 	// Beispieldaten: werden einmal beim Start in die H2-Datenbank geschrieben
 	@Bean
 	CommandLineRunner initData(EmployeeService employeeService) {
-		return args -> {
-			employeeService.addEmployee(new EmployeeDTO(null, "Anna", "Schmidt", "anna.schmidt@mail.de"));
-			employeeService.addEmployee(new EmployeeDTO(null, "Max", "Müller", "max.mueller@mail.de"));
-			employeeService.addEmployee(new EmployeeDTO(null, "Lea", "Weber", "lea.weber@mail.de"));
+		return new CommandLineRunner() {
+			@Override
+			public void run(String... args) {
+				employeeService.addEmployee(
+						new EmployeeDTO(null, "Anna", "Schmidt", "anna.schmidt@mail.de")
+				);
+				employeeService.addEmployee(
+						new EmployeeDTO(null, "Max", "Müller", "max.mueller@mail.de")
+				);
+				employeeService.addEmployee(
+						new EmployeeDTO(null, "Lea", "Weber", "lea.weber@mail.de")
+				);
+			}
 		};
 	}
 }
